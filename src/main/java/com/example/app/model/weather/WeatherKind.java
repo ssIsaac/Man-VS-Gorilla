@@ -1,4 +1,7 @@
+package com.example.app.model.weather;
 import java.util.Random;
+
+import com.example.app.statistics.Randomizer;
 
 /**
  * Abstract class WeatherKind - a superclass for defining particular weather phenomena. 

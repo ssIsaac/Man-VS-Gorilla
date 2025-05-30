@@ -1,3 +1,4 @@
+package com.example.app.statistics;
 import java.awt.Color;
 import java.util.HashMap;
 

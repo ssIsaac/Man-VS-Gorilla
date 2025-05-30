@@ -1,6 +1,11 @@
+package com.example.app.model.weather;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
+
+import com.example.app.statistics.Randomizer;
+import com.example.app.statistics.Field;
+import com.example.app.model.actor.Actor; 
 
 /**
  * Weather class controls the weather in our simulated world. 

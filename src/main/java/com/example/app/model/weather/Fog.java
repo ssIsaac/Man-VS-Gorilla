@@ -1,3 +1,4 @@
+package com.example.app.model.weather;
 
 /**
  * A class that creates Fog instances

@@ -1,3 +1,4 @@
+package com.example.app.model.weather;
 
 /**
  * Class that can store a pair of Integers standing for coordinates.

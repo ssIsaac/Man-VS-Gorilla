@@ -1,8 +1,12 @@
+package com.example.app.view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import com.example.app.statistics.FieldStats;
+import com.example.app.statistics.Field;
 
 /**
  * A graphical view of the simulation grid.

@@ -1,3 +1,4 @@
+package com.example.app.statistics;
 
 /**
  * TimeTracker class keeps track of the tiime in our simulated world.

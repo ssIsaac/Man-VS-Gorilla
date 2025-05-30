@@ -1,5 +1,7 @@
+package com.example.app.model.weather;
 import java.util.List;
 import java.util.ArrayList;
+
 
 /**
  * A class that creates ThunderStorm instances.

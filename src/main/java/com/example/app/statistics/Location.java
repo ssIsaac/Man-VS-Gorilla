@@ -1,3 +1,4 @@
+package com.example.app.statistics;
 /**
  * Represent a location in a rectangular grid.
  * 

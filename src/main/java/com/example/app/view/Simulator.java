@@ -1,8 +1,21 @@
+package com.example.app.view;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.Color;
+
+import com.example.app.model.actor.Actor;
+import com.example.app.statistics.Field;
+import com.example.app.statistics.TimeTracker;
+import com.example.app.model.weather.Weather;
+import com.example.app.statistics.Randomizer;
+import com.example.app.model.actor.Man;
+import com.example.app.model.actor.Gorilla;
+import com.example.app.statistics.Location;
+
+
+
 
 /**
  * A simple predator-prey simulator, based on a rectangular field
@@ -18,20 +31,11 @@ public class Simulator
     private static final int DEFAULT_WIDTH = 120;
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
-    // The probability that a wolf will be created in any given grid position.
-    private static final double WOLF_CREATION_PROBABILITY = 0.03;
-    // The probability that a cat will be created in any given grid position.
-    private static final double CAT_CREATION_PROBABILITY = 0.04;  
-    // The probability that a bird will be created in any given grid position.
-    private static final double BIRD_CREATION_PROBABILITY = 0.05;
-    //The probability that a mouse will be created in any given grid position.
-    private static final double MOUSE_CREATION_PROBABILITY = 0.06; 
-    //The probability that a fly will be created in any given grid position.
-    private static final double FLY_CREATION_PROBABILITY = 0.06;  
-    //The probability that a fruit will be created in any given grid position.
-    private static final double FRUIT_CREATION_PROBABILITY = 0.01;  
-    //The probability that a patch of grass will be created in any given grid position.
-    private static final double GRASS_CREATION_PROBABILITY = 0.01;  
+  
+    //The probability that a man will be created in any given grid position.
+    private static final double MAN_CREATION_PROBABILITY = 0.01;  
+    //The probability that a gorilla will be created in any given grid position.
+    private static final double GORILLA_CREATION_PROBABILITY = 0.01;  
 
     // List of animals in the field.
     private List<Actor> actors;
@@ -78,13 +82,8 @@ public class Simulator
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Cat.class, Color.ORANGE);
-        view.setColor(Wolf.class, Color.BLUE);
-        view.setColor(Bird.class, Color.RED);
-        view.setColor(Fly.class, Color.YELLOW);
-        view.setColor(Mouse.class, Color.BLACK);
-        view.setColor(Fruit.class, Color.PINK);
-        view.setColor(Grass.class, Color.GREEN);
+        view.setColor(Man.class, Color.ORANGE);
+        view.setColor(Gorilla.class, Color.BLUE);
         
         // Setup a valid starting point.
         reset();
@@ -146,7 +145,7 @@ public class Simulator
         for(Iterator<Actor> it = actors.iterator(); it.hasNext(); ) {
             Actor actor = it.next();
             actor.act(newActors, timeOfTheDay, weatherStatus);
-            if(! actor.isAlive()) {
+            if(!actor.isAlive()) {
                 it.remove();
             }
         }
@@ -179,40 +178,15 @@ public class Simulator
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= WOLF_CREATION_PROBABILITY) {
+                if(rand.nextDouble() <= GORILLA_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Wolf wolf = new Wolf(field, location, true, false);
-                    actors.add(wolf);
+                    Gorilla gorilla = new Gorilla(field, location, true, false);
+                    actors.add(gorilla);
                 }
-                else if(rand.nextDouble() <= CAT_CREATION_PROBABILITY) {
+                else if(rand.nextDouble() <= MAN_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Cat cat = new Cat(field, location, true, false);
-                    actors.add(cat);
-                }
-                else if(rand.nextDouble() <= BIRD_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Bird bird = new Bird(field, location, true, false);
-                    actors.add(bird);
-                }
-                else if(rand.nextDouble() <= FLY_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Fly fly = new Fly(field, location, true, false);
-                    actors.add(fly);
-                }
-                else if(rand.nextDouble() <= MOUSE_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Mouse mouse = new Mouse(field, location, true, false);
-                    actors.add(mouse);
-                }
-                else if(rand.nextDouble() <= FRUIT_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Fruit fruit = new Fruit(field, location, true, false);
-                    actors.add(fruit);
-                }
-                else if(rand.nextDouble() <= GRASS_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Grass grass = new Grass(field, location, true, false);
-                    actors.add(grass);
+                    Man man = new Man(field, location, true, false);
+                    actors.add(man);
                 }
                 // else leave the location empty.
             }
